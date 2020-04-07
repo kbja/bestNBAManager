@@ -97,6 +97,7 @@ public class OperatorService implements Operator {
   @Override
   public String export(PlayerLevel level, Collection<PlayerPosition> positions, PlayerStatus status) {
     List<Player> players = getPlayers(level,positions,status);
+    savePlayers(players);
     return playerCached.export(players);
   }
 

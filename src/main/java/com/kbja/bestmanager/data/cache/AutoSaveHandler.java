@@ -17,8 +17,8 @@ public class AutoSaveHandler {
 
   @Scheduled(fixedRate = 60 * 1000)
   public void autoSave(){
-    log.info("begin auto save");
+//    log.info("begin auto save");
     playerCached.savePlayers(null);
-    log.info("end auto save");
+//    log.info("end auto save");
   }
 }
