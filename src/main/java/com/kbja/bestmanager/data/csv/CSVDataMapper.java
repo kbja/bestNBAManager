@@ -8,8 +8,6 @@ import com.kbja.bestmanager.util.enums.PlayerLevel;
 import com.kbja.bestmanager.util.enums.PlayerPosition;
 import com.kbja.bestmanager.util.enums.PlayerStatus;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,7 +17,6 @@ import java.util.stream.Stream;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.shell.jcommander.JCommanderParameterResolver;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -37,7 +34,7 @@ public class CSVDataMapper implements DataMapper {
 
   @Override
   public List<Player> getPlayers(PlayerLevel level, Collection<PlayerPosition> positions,
-      PlayerStatus status) {
+      PlayerStatus status, String playerName) {
     String filePath = configuration.getPlayerListFilePath();
 
     List<Map<String, Object>> allData;

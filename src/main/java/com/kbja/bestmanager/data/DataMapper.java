@@ -14,13 +14,13 @@ public interface DataMapper extends Exporter {
 
   /**
    * 从球员池中，根据球员级别和位置查询球员
-   *
-   * @param level 球员级别
+   *  @param level 球员级别
    * @param positions 球员位置
    * @param status 球员位于球队中，还是球员池中。
+   * @param playerName 球员名称 模糊查询
    */
   List<Player> getPlayers(PlayerLevel level, Collection<PlayerPosition> positions,
-      PlayerStatus status);
+      PlayerStatus status, String playerName);
 
   /**
    * 保存所有球员信息

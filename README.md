@@ -43,9 +43,10 @@
 | --level  | 升级球员id                                                 | 否       |
 | --pos    | 想要升级的目标位置，每个位置间用逗号分隔。不填代表全部位置 | 否       |
 | --status | 球员状态                                                   | 否       |
+| --name   | 球员名称，模糊查询                                         | 否       |
 
 ```
-示例 list --level red --pos SF --status inpool
+示例 list --level red --pos SF --status inpool --name 詹姆斯
 列出颜色为red的所有位置为SF且状态为inpool的球员
 ```
 

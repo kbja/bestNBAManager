@@ -37,8 +37,8 @@ public class OperatorService implements Operator {
 
   @Override
   public List<Player> getPlayers(PlayerLevel level, Collection<PlayerPosition> positions,
-      PlayerStatus status) {
-    return playerCached.getPlayers(level, positions, status);
+      PlayerStatus status, String playerName) {
+    return playerCached.getPlayers(level, positions, status, playerName);
   }
 
   @Override
@@ -48,7 +48,8 @@ public class OperatorService implements Operator {
 
   @Override
   public Player randomPick(PlayerLevel level, Collection<PlayerPosition> positions) {
-    List<Player> players = playerCached.getPlayers(level, positions, PlayerStatus.inpool);
+    List<Player> players = playerCached.getPlayers(level, positions, PlayerStatus.inpool,
+        null);
     int random = random(players.size());
     Player pick = players.get(random);
     withdraw(pick.getId());
@@ -96,7 +97,7 @@ public class OperatorService implements Operator {
 
   @Override
   public String export(PlayerLevel level, Collection<PlayerPosition> positions, PlayerStatus status) {
-    List<Player> players = getPlayers(level,positions,status);
+    List<Player> players = getPlayers(level,positions,status, null);
     savePlayers(players);
     return playerCached.export(players);
   }

@@ -32,7 +32,7 @@ public class PlayerCached implements DataMapper {
 
   @Override
   public List<Player> getPlayers(PlayerLevel level, Collection<PlayerPosition> positions,
-      PlayerStatus status) {
+      PlayerStatus status, String playerName) {
     initData();
     Stream<Player> all = idMap.values().stream();
     if (level != null) {
@@ -43,6 +43,9 @@ public class PlayerCached implements DataMapper {
     }
     if (status != null) {
       all = all.filter(p -> p.getPlayerStatus() == status);
+    }
+    if(playerName!=null){
+      all = all.filter(player -> player.getName().contains(playerName));
     }
     return all.collect(Collectors.toList());
   }
@@ -93,7 +96,7 @@ public class PlayerCached implements DataMapper {
   }
 
   private void loadDataFromDataSource() {
-    List<Player> players = realDataMapper.getPlayers(null, null, null);
+    List<Player> players = realDataMapper.getPlayers(null, null, null, null);
     if (!CollectionUtils.isEmpty(players)) {
       idMap = players.stream().collect(Collectors.toMap(Player::getId, a -> a));
     }

@@ -33,8 +33,9 @@ public class ShellInterface implements Operator {
   public List<Player> getPlayers(
       @ShellOption(value = "--level", defaultValue = ShellOption.NULL) PlayerLevel level,
       @ShellOption(value = "--pos", defaultValue = ShellOption.NULL) Collection<PlayerPosition> positions,
-      @ShellOption(value = "--status", defaultValue = ShellOption.NULL) PlayerStatus status) {
-    return operatorService.getPlayers(level, positions, status);
+      @ShellOption(value = "--status", defaultValue = ShellOption.NULL) PlayerStatus status,
+      @ShellOption(value = "--name",defaultValue = ShellOption.NULL) String playerName) {
+    return operatorService.getPlayers(level, positions, status, playerName);
   }
 
   @Override

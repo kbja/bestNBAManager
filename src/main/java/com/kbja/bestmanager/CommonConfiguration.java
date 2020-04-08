@@ -1,8 +1,6 @@
 package com.kbja.bestmanager;
 
 import com.kbja.bestmanager.data.DataMapper;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.annotation.PostConstruct;
@@ -11,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.ResourceUtils;
 
 /**
  * Created by yiming.zhou on 2020/4/3
@@ -33,7 +30,7 @@ public class CommonConfiguration {
 
   public boolean initData() {
     try {
-      playerCached.getPlayers(null, null, null);
+      playerCached.getPlayers(null, null, null, null);
       return true;
     } catch (Exception e) {
       return false;
