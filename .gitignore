@@ -36,4 +36,5 @@ mvnw.cmd
 .mvn
 
 *.csv
-*.excel
+*.xlsx
+*.xls
