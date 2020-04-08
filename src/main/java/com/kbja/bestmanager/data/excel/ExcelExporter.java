@@ -56,10 +56,28 @@ public class ExcelExporter implements Exporter {
     return filePath;
   }
 
+  public static void main(String[] args){
+    File f = new File("test.txt");
+    try {
+      f.createNewFile();
+    }
+    catch (Exception e){
+      System.out.println(1);
+     System.out.println(e.getMessage());
+    }
+    f = new File("G:\\bestNBAManager-master\\abc.xlsx");
+    try {
+      f.createNewFile();
+    }
+    catch (Exception e){
+      System.out.println(2);
+      System.out.println(e.getMessage());
+    }
+  }
+
   private String writeFile(Workbook workbook) {
     String exportPath = configuration.getExportFilePath() + ".xlsx";
     try {
-
       File f = new File(exportPath);
       if (!f.exists()) {
         f.createNewFile();
@@ -69,6 +87,7 @@ public class ExcelExporter implements Exporter {
       fileOut.close();
     }
     catch (Exception e){
+      log.error("export Path : [{}]",exportPath);
       log.error(e.getMessage());
       return null;
     }

@@ -28,7 +28,7 @@ public class CommonConfiguration {
   private String rootPath;
   @Autowired
   private DataMapper playerCached;
-  private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd-HH:mm:ss");
+  private SimpleDateFormat format = new SimpleDateFormat("yyyy年MM月dd日HH时mm分ss秒");
 
 
   public boolean initData() {
@@ -55,7 +55,7 @@ public class CommonConfiguration {
   public String getExportFilePath() {
     long timestamp = System.currentTimeMillis();
     String formated = format.format(new Date(timestamp));
-    String fileName = "export-" + formated;
+    String fileName = "导出球员列表" + formated;
     String result = rootPath + fileName;
     return result;
   }
@@ -79,6 +79,10 @@ public class CommonConfiguration {
       path =  path.substring(0, path.lastIndexOf("/")+1);
       return path.substring(path.indexOf(":")+1);
     }
-    return path.replace("target/classes/", "");
+    path =  path.replace("target/classes/", "");
+    if(System.getProperty("os.name").contains("dows")){
+      path = path.replace("/","\\");
+    }
+    return path;
   }
 }
